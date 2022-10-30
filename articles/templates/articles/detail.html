@@ -95,8 +95,8 @@
               <input type="submit" value="DELETE">
             </form>
           `
-          const reviseBtn = document.createElement('button')
-          reviseBtn.innerText = '수정'
+          const reviseBtn = document.createElement('button')  // form을 제출 할 때마다 수정 버튼을 만들고
+          reviseBtn.innerText = '수정' //버튼의 이름
           
           li.append(reviseBtn)
           update(reviseBtn)
@@ -134,8 +134,8 @@
           })
             .then(response => {
               const { commentPk, articlePk } = response.data
-              commentLi.innerHTML = `
-                {{ request.user.username }} - <span>$${input.value.replaceAll("<","&lt;").replaceAll(">","&gt;")}</span>
+              commentLi.innerHTML = ` 
+                {{ request.user.username }} - <span>$${input.value.replaceAll("<","&lt;").replaceAll(">","&gt;")}</span>  
                 <form action="/articles/${articlePk}/comments/${commentPk}/delete/" method="POST" class="d-inline">
                   {% csrf_token %}
                   <input type="submit" value="DELETE">
@@ -157,3 +157,4 @@
 
   </script>
 {% endblock script %}
+<!-- .replaceAll("<","&lt;").replaceAll(">","&gt;")   >> 6-5 <h1>태그가 그대로 적용되지 않게 하기 위함--> 
